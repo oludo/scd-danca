@@ -1,0 +1,27 @@
+@import "./utils.scss";
+
+.links {
+  @include col(portrait, 1);
+  max-width: 700px;
+  text-align: left;
+  margin: auto;
+  padding: space(section) space(big);
+
+  &_link {
+    @extend .link;
+    background-color: var(--card-color);
+    padding: space(small) space(normal);
+    margin: space(small) space(none);
+
+    &_title {
+      @extend .heading--small;
+      margin: space(none);
+    }
+
+    &_description {
+      @extend .text;
+      @extend .text--contrast;
+      margin: space(small) space(none);
+    }
+  }
+}

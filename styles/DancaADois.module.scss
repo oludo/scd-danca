@@ -1,0 +1,86 @@
+@import "./utils.scss";
+
+.header {
+  padding: space(big);
+  padding-bottom: space(small);
+
+  &_logo {
+    @extend .heading;
+    padding-bottom: space(none);
+  }
+
+  &_description {
+    @extend .text;
+  }
+}
+
+.hero {
+  @include col(portrait, 1);
+  @include col(tablet, 2);
+  padding: space(none) space(big) space(section) space(big);
+  position: relative;
+
+  &_cta {
+    position: relative;
+
+    &_heading {
+      @extend .heading;
+      z-index: 10;
+      position: relative;
+
+      &_contrast {
+        @extend .heading;
+        color: var(--heading-primary-contrast);
+      }
+    }
+
+    &_text {
+      @extend .text;
+      z-index: 10;
+      position: relative;
+    }
+
+    &_button {
+      @extend .button;
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      margin-top: space(big);
+
+      &_icon {
+        @extend .icon;
+      }
+    }
+  }
+
+  &_image {
+    position: absolute;
+    transform: scale(1.5) translate(84px, -32px);
+
+    @include size(tablet) {
+      position: relative;
+      transform: scale(1.6) translate(5px, -42px);
+    }
+  }
+}
+
+.footer {
+  @include col(portrait, 1);
+  @include col(tablet, 2);
+  @include col(laptop, 3);
+  position: relative;
+  padding: space(section) space(big);
+
+  &_contact {
+    text-align: center;
+
+    &_title {
+      @extend .heading--small;
+      margin-bottom: space(small);
+    }
+
+    &_link {
+      @extend .link;
+    }
+  }
+}

@@ -1,0 +1,125 @@
+@use "sass:list";
+@use "sass:map";
+
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap");
+
+$devices: (
+  "portrait": 0px,
+  "landscape": 576px,
+  "tablet": 768px,
+  "laptop": 992px,
+  "desktop": 1200px,
+);
+
+$spaces: (
+  "none": 0,
+  "gap": 5px,
+  "small": 10px,
+  "normal": 25px,
+  "big": 40px,
+  "section": 60px,
+);
+
+@mixin size($size) {
+  @each $device, $width in $devices {
+    @if $size == $device {
+      @media (min-width: $width) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin col($device, $i) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @include size($device) {
+    flex: 0 1 100% / $i;
+
+    & > * {
+      width: 100% / $i;
+    }
+  }
+}
+
+@mixin show($device) {
+  display: none;
+
+  @include size($device) {
+    display: initial;
+  }
+}
+
+@mixin hide($device) {
+  @include size($device) {
+    display: none;
+  }
+}
+
+@function space($space) {
+  @return map.get($spaces, $space);
+}
+
+.link {
+  text-decoration: inherit;
+  font-family: Poppins, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  color: var(--link-color);
+}
+
+.text {
+  font-family: Poppins, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.text--bold {
+  @extend .text;
+  font-weight: bold;
+}
+
+.text--contrast {
+  @extend .text;
+  color: var(--text-primary-contrast);
+}
+
+.heading {
+  font-family: "Lobster Two", cursive;
+  font-size: 3rem;
+  line-height: 1.15;
+  color: var(--heading-primary);
+}
+
+.heading--contrast {
+  @extend .heading;
+  color: var(--heading-primary-contrast);
+}
+
+.heading--small {
+  @extend .heading;
+  font-size: 2rem;
+}
+
+.button {
+  display: block;
+  cursor: pointer;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  text-decoration: inherit;
+  text-align: center;
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+.icon {
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
