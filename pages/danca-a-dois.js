@@ -3,6 +3,7 @@ import Head from "next/head";
 import { FaWhatsapp } from "react-icons/fa";
 import styles from "../styles/DancaADois.module.scss";
 import makeFacebookPixel from "../libs/facebookPixel";
+import makeGoogleAnalytics from "../libs/googleAnalytics";
 
 const HeroImg = () => (
   <Image
@@ -19,12 +20,14 @@ const HeroImg = () => (
 );
 
 export default function DancaADois() {
-  let FacebookPixel;
+  let FacebookPixel, GoogleAnalytics;
 
   if (typeof window !== "undefined" && typeof document !== "undefined") {
     FacebookPixel = makeFacebookPixel({ ID: "152464016914795" });
     FacebookPixel.initialize();
     FacebookPixel.track("PageView");
+    GoogleAnalytics = makeGoogleAnalytics({ ID: "UA-200976932-1" });
+    GoogleAnalytics.initialize();
   }
 
   return (
