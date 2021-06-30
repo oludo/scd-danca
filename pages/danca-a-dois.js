@@ -9,10 +9,12 @@ const HeroImg = () => (
     src="/hero.png"
     alt="hero-scd"
     layout="responsive"
-    height={1.5}
-    width={1}
+    height={6}
+    width={4}
     objectFit="cover"
-    quality={50}
+    quality={100}
+    priority
+    placeholder="blur"
   />
 );
 
